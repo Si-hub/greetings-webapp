@@ -1,24 +1,28 @@
 <div class="row">
-            <h1>Greetings WebApp</h1>
+            <h1>Greetings webApp</h1>
         </div>
+
     <!--first form-->    
-    <form action="/greetings">
+    <form action="/greetings" method="POST">
         <div class="row">
             <span class="label-body">Name</span>
-            <input type="text" name="alphabetOnly" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="theName" id="Name">
+            <input type="text" name="userName" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="theName" id="Name">
             
-        </div>
+        </div><br/>
        
 
         <div class="row">
-            <input type="radio" name="language" class="language" value="IsiXhosa">
+            <input type="radio" name="language" class="taal" value="IsiXhosa">
             <span class="label-body">IsiXhosa</span>
-            <input type="radio" name="language" class="language" value="English">
+            <input type="radio" name="language" class="taal" value="English">
             <span class="label-body">English</span>
-            <input type="radio" name="language" class="language" value="Afrikaans">
+            <input type="radio" name="language" class="taal" value="Afrikaans">
             <span class="label-body">Afrikaans</span>
+        </div><br/>
+        <div>
             <button class="button-primary greetbtn" on type="submit" name="button">Greetme</button>
         </div>
+
     </form>
     <!--second form-->  
     <form action="/counter/:USER_NAME" method="POST">
@@ -35,6 +39,6 @@
     <!--last form--> 
     <form action="/greeted" method="POST">
         <div class="printHere">
-            <p></p>
+            <p>{{display}}</p>
         </div>
     </form>
