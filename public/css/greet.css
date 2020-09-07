@@ -55,6 +55,7 @@ body{
       line-height: 38px;
       margin: 0;
       
+      
    }
 
    .printHere{
@@ -63,3 +64,11 @@ body{
       font-weight: bold;
       font-size: 20px;
    }
+
+   .colorBars{
+      color: #d8ab4e;
+   }
+
+.nameColor{
+   color: #a39274;
+}

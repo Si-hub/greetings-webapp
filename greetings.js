@@ -36,7 +36,11 @@ module.exports = function greetings(){
         if (language === "Afrikaans"){
             return "Goeie daag " + name;
         } 
-    }                                     
+    }    
+    
+    function getNames(){
+        return object;
+    }
                                          
     function greetingsCounter(){
         var calculate = 0;
@@ -61,6 +65,7 @@ module.exports = function greetings(){
         greetingsCounter,
         map,
         clean,
+        getNames,
         
     }
 }

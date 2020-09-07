@@ -36,20 +36,30 @@ app.post("/greetings", function (req, res) {
 
   //display my greetings
   const displayMyGreetings = Greetings.greet(userName, language)
+
+  const greetingsCounter = req.body.greetingsCounter;
+  const counter = Greetings.greetingsCounter(greetingsCounter)// dispaly my counter
+  console.log(Greetings.getNames())
   res.render("index", {
     display: displayMyGreetings,
+    count: counter
   });
 })
 
 
 app.get("/greeted", function (req, res) {
-
-  res.render("")
+     var names = Greetings.getNames();
+      for (const list in names) {
+       
+      }
+     
+  res.render("greet", { name :names});
 })
 
 app.get("/counter/:USER_NAME", function (req, res) {
+  
   res.render("");
-});
+})
 
 app.post("/reset", function (req, res) {
   res.redirect("/")
