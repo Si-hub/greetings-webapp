@@ -56,12 +56,13 @@ app.get("/greeted", function (req, res) {
   res.render("greet", { name :names});
 })
 
-app.get("/counter/:USER_NAME", function (req, res) {
+app.get("/counter/:user_name", function (req, res) {
   
   res.render("");
 })
 
 app.post("/reset", function (req, res) {
+  
   res.redirect("/")
 })
 

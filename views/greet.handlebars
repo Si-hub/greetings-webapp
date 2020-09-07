@@ -2,23 +2,16 @@
     <div>
         <h1>Greeted List:</h1>
     </div>
-
-    <table>
-        <tr class="colorBars">
-            <th>Names</th>
-            <!--"th" table header-->
-            {{!-- <th>Counter</th>
-            <th>When</th> --}}
-        </tr>
-
+    <div>
+        <h2 class="nameColor">Names</h2>
+    </div>
+    <ul id="container">
         {{#each name}}
-        <tr class="nameColor">
-            <a href="/greeted">
-                <td> {{@key}}</td>
-            </a>
 
-        </tr>
-
+        <a href="/greeted">
+            <li> {{@this.key}} </li>
+        </a>
         {{/each}}
-    </table>
+    </ul>
+
 </div>

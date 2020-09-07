@@ -72,3 +72,7 @@ body{
 .nameColor{
    color: #a39274;
 }
+
+#container a {
+   color: seagreen;
+}
