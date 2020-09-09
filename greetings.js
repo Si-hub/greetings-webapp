@@ -1,7 +1,11 @@
 module.exports = function greetings(){
     var object =  {};
  
-  
+  function errorMessage(){
+    if( userName === "" && language === null){
+        return  "please enter your name and select language"
+    }
+  }
     function greet(name, language){
         
         //if you forgot to type a name but you did select a language do the following//
@@ -53,17 +57,13 @@ module.exports = function greetings(){
         return calculate;
     }
 
-    function map(){
-        return object;
-    }
-
     function clean(){ //i will use this function to clean up my 
         object = {};  // localstorage with "localstorage.clear()"
     }
     return{
+        errorMessage,
         greet,
         greetingsCounter,
-        map,
         clean,
         getNames,
         

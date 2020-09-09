@@ -48,22 +48,26 @@ app.post("/greetings", function (req, res) {
 
 
 app.get("/greeted", function (req, res) {
-     var names = Greetings.getNames();
-      for (const list in names) {
-       
-      }
-     
-  res.render("greet", { name :names});
+  var names = Greetings.getNames();
+  for (const list in names) {
+
+  }
+
+  res.render("greet", { name: names });
 })
 
 app.get("/counter/:user_name", function (req, res) {
-  
-  res.render("");
+    const user_name = req.params.user_name
+    var counter = Greetings.greetingsCounter(user_name);
+  res.render("counter", {
+    names : Greetings.getNames(),
+    user_name,
+     counter});
 })
 
 app.post("/reset", function (req, res) {
-  
-  res.redirect("/")
+
+  res.redirect("")
 })
 
 let PORT = process.env.PORT || 3080;
