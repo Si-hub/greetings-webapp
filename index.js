@@ -53,13 +53,13 @@ app.post("/greetings", function (req, res) {
     req.flash('info', 'please enter your name and select language');
   }else if (!language){
     req.flash('info', 'please select your language');
-  }
-  //display my greetings
-  const displayMyGreetings = Greetings.greet(userName, language)
+  }else{
+    //display my greetings
+  var displayMyGreetings = Greetings.greet(userName, language)
 
-  const greetingsCounter = req.body.greetingsCounter;
-  const counter = Greetings.greetingsCounter(greetingsCounter)// dispaly my counter
-  //console.log(Greetings.getNames())
+  var counter = Greetings.greetingsCounter()// dispaly my counter
+  }
+  
   res.render("index", {
     display: displayMyGreetings,
     count: counter

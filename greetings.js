@@ -21,7 +21,7 @@ module.exports = function greetings() {
             }
         }
 
-        var take = name.toLowerCase();   //convert all string typed in lower cases 
+        var take = name.toUpperCase().charAt(0) + name.slice(1);   //convert all string typed in lower cases 
         if (object[take] === undefined) {  //"undefined" if someone didnt put anything 
             object[take] = 0;            // dont increase the counter
         }
@@ -33,13 +33,13 @@ module.exports = function greetings() {
         }
 
         if (language === "IsiXhosa") {   // greet a person with his language followed by name
-            return "Molo " + name;
+            return "Molo " + take;
         }
         if (language === "English") {
-            return "Good day " + name;
+            return "Good day " + take;
         }
         if (language === "Afrikaans") {
-            return "Goeie daag " + name;
+            return "Goeie daag " + take;
         }
     }
 
