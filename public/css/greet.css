@@ -77,3 +77,18 @@ body{
    color: seagreen;
    list-style-type: square;
 }
+
+.info{
+   color: crimson;
+   margin-bottom: 1em;
+   margin-left: 3em;
+}
+
+.success{
+   color: lightseagreen;
+   margin-bottom: 1em;
+}
+
+.textMessage{
+   color:lightseagreen ;
+}

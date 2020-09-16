@@ -1,23 +1,4 @@
-<div class="rowText">
-    <p class="textMessage">Hello, {{user_name}} has been greeted {{counter}} times</p>
-    <h5 class="more">For more info see the below table:</h5>
+<div class="row">
+
+    <p class="textMessage">Hello, {{userName}} has been greeted {{counter}} times</p>
 </div>
-
-<table class="centered">
-    <thead>
-        <tr class="tableHeader">
-            <th>user_name</th>
-            <th>counter</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        {{#each names}}
-        <tr>
-
-            <td>{{@this.key}}</td>
-            <td>{{this}}</td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>

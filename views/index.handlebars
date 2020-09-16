@@ -1,44 +1,49 @@
 <div class="row">
-    <h1>Greetings webApp</h1>
-</div>
+    <div class="contentRows">
+        <h1>Greetings webApp</h1>
 
-<!--first form-->
-<form action="/greetings" method="POST">
-    <div class="row">
-        <span class="label-body">Name</span>
-        <input type="text" name="userName"
-            onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"
-            class="theName" id="Name">
+        <!--first form-->
+        <form action="/greetings" method="POST">
+            <div class="row">
+                 <div class="info">
+                <p> {{messages.info}}</p>
+            </div>
+                <span class="label-body">Name</span>
+                <input type="text" name="userName"
+                    onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"
+                    class="theName" id="Name">
 
-    </div><br />
+            </div><br />
 
 
-    <div class="row">
-        <input type="radio" name="language" class="taal" value="IsiXhosa">
-        <span class="label-body">IsiXhosa</span>
-        <input type="radio" name="language" class="taal" value="English">
-        <span class="label-body">English</span>
-        <input type="radio" name="language" class="taal" value="Afrikaans">
-        <span class="label-body">Afrikaans</span>
-    </div><br />
+            <div class="row">
+                <input type="radio" name="language" class="taal" value="IsiXhosa">
+                <span class="label-body">IsiXhosa</span>
+                <input type="radio" name="language" class="taal" value="English">
+                <span class="label-body">English</span>
+                <input type="radio" name="language" class="taal" value="Afrikaans">
+                <span class="label-body">Afrikaans</span>
+            </div><br />
 
-    <div class="row">
-        <h3>Counter: <span class="greetingsCounter">{{count}}</span></h3>
+            <div class="row">
+                <h3>Counter: <span class="greetingsCounter">{{count}}</span></h3>
+            </div>
+            <div>
+                <button class="button-primary greetbtn" on type="submit" name="button">Greetme</button>
+                <button class="button-secondary resetbtn" on type="submit" name="button">Reset</button>
+            </div>
+            <div class="printHere">
+                <p>{{display}}</p>
+            </div>
+
+
+
+        </form>
+        <hr>
+        <div>
+            <a href="/greeted">
+                <button class="button-secondary greetBtn" on type="submit" name="button">Greeted Users</button>
+            </a>
+        </div>
     </div>
-    <div>
-        <button class="button-primary greetbtn" on type="submit" name="button">Greetme</button>
-        <button class="button-secondary resetbtn" on type="submit" name="button">Reset</button>
-    </div>
-    <div class="printHere">
-        <p>{{display}}</p>
-    </div>
-
-
-
-</form>
-
-<div>
-    <a href="/greeted">
-        <button class="button-secondary greetBtn" on type="submit" name="button">Greeted Users</button>
-    </a>
 </div>
