@@ -10,9 +10,9 @@
         <!--1. to iterate over a list of items used the built-in called "each helper"
             2.  Inside the block, used "this expression to reference the current context -->
 
-        <a href="/counter/{{@this.key}}">
+        <a href="/counter/{{name}}">
             <!--so for object iteration, {{@key}} expression to references the current key name-->
-            <li> {{@this.key}} </li>
+            <li> {{name}} </li>
         </a>
         {{/each}}
     </ul>

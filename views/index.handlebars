@@ -5,11 +5,11 @@
         <!--first form-->
         <form action="/greetings" method="POST">
             <div class="row">
-                 <div class="info">
-                <p> {{messages.info}}</p>
-            </div>
+                <div class="info">
+                    <p> {{messages.info}}</p>
+                </div>
                 <span class="label-body">Name</span>
-                <input type="text" name="userName"
+                <input type="text" name="userName" size="24" required
                     onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"
                     class="theName" id="Name">
 
@@ -17,20 +17,21 @@
 
 
             <div class="row">
-                <input type="radio" name="language" class="taal" value="IsiXhosa">
+                <input type="radio" name="language" required class="taal" value="IsiXhosa">
                 <span class="label-body">IsiXhosa</span>
-                <input type="radio" name="language" class="taal" value="English">
+                <input type="radio" name="language" required class="taal" value="English">
                 <span class="label-body">English</span>
-                <input type="radio" name="language" class="taal" value="Afrikaans">
+                <input type="radio" name="language" required class="taal" value="Afrikaans">
                 <span class="label-body">Afrikaans</span>
-            </div><br />
+            </div>
 
             <div class="row">
                 <h3>Counter: <span class="greetingsCounter">{{count}}</span></h3>
             </div>
             <div>
                 <button class="button-primary greetbtn" on type="submit" name="button">Greetme</button>
-                <button class="button-secondary resetbtn" on type="submit" name="button">Reset</button>
+                <button class="button-secondary resetbtn" on type="submit" name="button"><a href="/reset"
+                        style="color:white">Reset</a></button>
             </div>
             <div class="printHere">
                 <p>{{display}}</p>

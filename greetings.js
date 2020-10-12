@@ -1,12 +1,6 @@
-module.exports = function greetings() {
-    var object = {};
+module.exports = function greetings(pool) {
 
-    function errorMessage() {
-        if (userName === "") {
-            return "please enter your name and select language"
-        }
-    }
-    function greet(name, language) {
+    async function greet(name, language) {
 
         //if you forgot to type a name but you did select a language do the following//
         if (!name) {
@@ -21,64 +15,69 @@ module.exports = function greetings() {
             }
         }
 
-        var take = name.toUpperCase().charAt(0) + name.slice(1);   //convert all string typed in lower cases 
-        if (object[take] === undefined) {  //"undefined" if someone didnt put anything 
-            object[take] = 0;            // dont increase the counter
-        }
-        if (object[take] === 1) {
 
-        }
-        else {
-            object[take] += 1;
-        }
-
-        if (language === "IsiXhosa") {   // greet a person with his language followed by name
-            return "Molo " + take;
+        if (language === "IsiXhosa") { // greet a person with his language followed by name
+            return "Molo " + name;
         }
         if (language === "English") {
-            return "Good day " + take;
+            return "Good day " + name;
         }
         if (language === "Afrikaans") {
-            return "Goeie daag " + take;
+            return "Goeie daag " + name;
         }
     }
 
-    function getNames() {
-        return object;
+    async function insertNames(name) {
+        const insertUsers = await pool.query('INSERT INTO greet_me (name, greet_counter) VALUES($1,$2)', [name, 1])
+            // return insertUsers.rows;
     }
 
-    function greetingsCounter() {
-        var calculate = 0;
-        for (var key in object) {
-            if (object.hasOwnProperty(key)) {  //use for...in statement to loop through 
-                calculate++;                //the properties of an object
-                // also use "hasOwnProperty" method to check whether if the
-            }               //property(key) belongs to the object
+    async function getNames() {
+        const users = await pool.query('select name from greet_me ')
+        return users.rows;
+    }
+
+
+    async function checkName(name) {
+        const users = await pool.query('select name from greet_me where name=$1', [name])
+        return users.rowCount;
+    }
+    async function updateCounter(name) {
+        const userCounter = await pool.query('update greet_me set greet_counter = greet_counter + 1 where name=$1', [name]); /*update records */
+        return userCounter.rows
+    }
+
+    async function counter() {
+        const count = await pool.query('select greet_id from greet_me')
+        return count.rowCount
+    }
+
+    async function greetedUsersCount(name) {
+        const greetedUsers = await pool.query('select greet_counter from greet_me where name=$1', [name])
+
+        if (greetedUsers.rowCount === 1) {
+            return greetedUsers.rows[0].greet_counter
+
+        } else {
+            return 0;
         }
-        return calculate;
     }
 
-    function eachUserCounter(name) {
-        // use for..in loop to iterate over an object (objects store properties)      
-        for (var key in object) { //"key" in obj: To check if a property with the given key exists 
-            if (key === name) {   
-              var element = object[key] //Square brackets allow us to take the key from a variable object                
-                
-            }                           //values that are inside the object
-        }
-        return element;
-    }
 
-    function clean() { //i will use this function to clean up my 
-        object = {};  // localstorage with "localstorage.clear()"
+
+    async function clearValues() {
+        await pool.query("delete from greet_me")
     }
     return {
-        errorMessage,
+        insertNames,
         greet,
-        greetingsCounter,
-        clean,
+        updateCounter,
+        clearValues,
         getNames,
-        eachUserCounter,
-
+        // eachUserCounter,
+        // setName,
+        checkName,
+        counter,
+        greetedUsersCount
     }
 }
