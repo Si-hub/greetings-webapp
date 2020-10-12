@@ -2,7 +2,7 @@
 language: node_js
 
 env:
-  - DATABASE_URL=postgresql://sim:pg123@localhost:5432/greet_test
+  - DATABASE_URL=postgresql://postgres@localhost:5432/greet_test
 
 node_js:  
   - 12

@@ -77,13 +77,6 @@ describe('Insert names and Get names on database', function() {
         assert.equal(3, await greetings.counter())
     })
 
-    it('should get names of the greeted users', async function() {
-
-        // the Factory Function is called greet
-        let greetings = Greet(pool);
-        assert.equal("3", await greetings.getNames('John', 'English'))
-
-    })
 
     after(function() {
         pool.end();
