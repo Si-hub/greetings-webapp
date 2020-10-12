@@ -100,3 +100,35 @@ button {
 .textMessage {
     color: lightseagreen;
 }
+
+ul a {
+    text-decoration: none;
+}
+
+ul li {
+    background-color: lightseagreen;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    width: fit-content;
+}
+
+.previouBtn a {
+    color: white;
+    text-decoration: none;
+}
+
+.backBtn a {
+    text-decoration: none;
+    color: black;
+    background-color: #a39274;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    width: fit-content;
+}
+
+.backBtn a:hover {
+    background-color: lightseagreen;
+}

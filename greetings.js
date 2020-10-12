@@ -28,6 +28,7 @@ module.exports = function greetings(pool) {
     }
 
     async function insertNames(name) {
+        name = name.toUpperCase().charAt(0) + name.slice(1);
         const insertUsers = await pool.query('INSERT INTO greet_me (name, greet_counter) VALUES($1,$2)', [name, 1])
             // return insertUsers.rows;
     }
@@ -39,10 +40,12 @@ module.exports = function greetings(pool) {
 
 
     async function checkName(name) {
+        name = name.toUpperCase().charAt(0) + name.slice(1);
         const users = await pool.query('select name from greet_me where name=$1', [name])
         return users.rowCount;
     }
     async function updateCounter(name) {
+        name = name.toUpperCase().charAt(0) + name.slice(1);
         const userCounter = await pool.query('update greet_me set greet_counter = greet_counter + 1 where name=$1', [name]); /*update records */
         return userCounter.rows
     }
@@ -53,6 +56,7 @@ module.exports = function greetings(pool) {
     }
 
     async function greetedUsersCount(name) {
+        name = name.toUpperCase().charAt(0) + name.slice(1);
         const greetedUsers = await pool.query('select greet_counter from greet_me where name=$1', [name])
 
         if (greetedUsers.rowCount === 1) {
