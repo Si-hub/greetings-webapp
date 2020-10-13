@@ -114,7 +114,7 @@ ul li {
     width: fit-content;
 }
 
-.previouBtn a {
+.previousBtn a {
     color: white;
     text-decoration: none;
 }
@@ -131,4 +131,8 @@ ul li {
 
 .backBtn a:hover {
     background-color: lightseagreen;
+}
+
+.row a {
+    text-decoration: none;
 }
