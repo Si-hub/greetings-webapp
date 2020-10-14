@@ -27,7 +27,7 @@ module.exports = function greetingRoute() {
             req.flash('info', 'please enter your name and select language');
         } else if (!language) {
             req.flash('info', 'please select your language');
-        } else {
+        } else if (userName && language) {
             // dispaly my counter
             var counter = await Greetings.counter()
 

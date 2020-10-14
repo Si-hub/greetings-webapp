@@ -3,6 +3,7 @@ module.exports = function greetings(pool) {
     async function greet(name, language) {
         var username = name.toUpperCase().charAt(0) + name.slice(1);
         //if you forgot to type a name but you did select a language do the following//
+
         if (!username) {
             if (language === "IsiXhosa") {
                 return "Nceda ufake igama lakho"
@@ -14,16 +15,17 @@ module.exports = function greetings(pool) {
                 return "Plaas jou naam"
             }
         }
+        if (name && language) {
 
-
-        if (language === "IsiXhosa") { // greet a person with his language followed by name
-            return "Molo " + username;
-        }
-        if (language === "English") {
-            return "Good day " + username;
-        }
-        if (language === "Afrikaans") {
-            return "Goeie daag " + username;
+            if (language === "IsiXhosa") { // greet a person with his language followed by name
+                return "Molo " + username;
+            }
+            if (language === "English") {
+                return "Good day " + username;
+            }
+            if (language === "Afrikaans") {
+                return "Goeie daag " + username;
+            }
         }
     }
 
