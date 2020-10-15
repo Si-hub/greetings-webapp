@@ -1,13 +1,4 @@
-module.exports = function greetingRoute() {
-
-    const pg = require("pg");
-    const Pool = pg.Pool;
-
-    const connectionString = process.env.DATABASE_URL || 'postgresql://sim:pg123@localhost:5432/greet';
-
-    const pool = new Pool({
-        connectionString
-    });
+module.exports = function greetingRoute(pool) {
 
     const greetings = require('./greetings');
     const Greetings = greetings(pool);
@@ -20,29 +11,28 @@ module.exports = function greetingRoute() {
     async function toGreet(req, res) {
         var userName = req.body.userName;
         var language = req.body.language;
-        // console.log(req.body.userName)
-        // console.log(req.body.language)
 
         if (!userName && !language) {
             req.flash('info', 'please enter your name and select language');
         } else if (!language) {
             req.flash('info', 'please select your language');
         } else if (userName && language) {
-            // dispaly my counter
-            var counter = await Greetings.counter()
+
 
             const check = await Greetings.checkName(userName)
-                // console.log("check " + check)
+
             if (check === 0) {
-                Greetings.insertNames(userName)
+                await Greetings.insertNames(userName)
             } else {
-                Greetings.updateCounter(userName)
+                await Greetings.updateCounter(userName)
             }
             //display my greetings
             var displayMyGreetings = await Greetings.greet(userName, language)
-                // Greetings.setName(userName)
+            var counter = await Greetings.counter()
+            console.log(counter);
+
         }
-        //console.log({ counter, displayMyGreetings })
+
         res.render("index", {
             display: displayMyGreetings,
             count: counter

@@ -1,4 +1,3 @@
-//import a module by name
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const flash = require('express-flash');
@@ -6,12 +5,20 @@ const session = require('express-session');
 const express = require("express");
 const routes = require('./greetingsRoutes');
 
+const pg = require("pg");
+const Pool = pg.Pool;
+
+const connectionString = process.env.DATABASE_URL || 'postgresql://sim:pg123@localhost:5432/greet';
+
+const pool = new Pool({
+    connectionString
+});
 
 // create my app
 const app = express();
 const greetingsRoutes = require('./greetingsRoutes');
 
-const GreetingsRoutes = greetingsRoutes();
+const GreetingsRoutes = greetingsRoutes(pool);
 
 
 

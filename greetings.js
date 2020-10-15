@@ -2,7 +2,7 @@ module.exports = function greetings(pool) {
 
     async function greet(name, language) {
         var username = name.toUpperCase().charAt(0) + name.slice(1);
-        //if you forgot to type a name but you did select a language do the following//
+
 
         if (!username) {
             if (language === "IsiXhosa") {
@@ -17,7 +17,7 @@ module.exports = function greetings(pool) {
         }
         if (name && language) {
 
-            if (language === "IsiXhosa") { // greet a person with his language followed by name
+            if (language === "IsiXhosa") {
                 return "Molo " + username;
             }
             if (language === "English") {
@@ -32,7 +32,7 @@ module.exports = function greetings(pool) {
     async function insertNames(name) {
         name = name.toUpperCase().charAt(0) + name.slice(1);
         const insertUsers = await pool.query('INSERT INTO greet_me (name, greet_counter) VALUES($1,$2)', [name, 1])
-            // return insertUsers.rows;
+        return insertUsers.rows;
     }
 
     async function getNames() {
@@ -70,7 +70,6 @@ module.exports = function greetings(pool) {
     }
 
 
-
     async function clearValues() {
         await pool.query("delete from greet_me")
     }
@@ -80,8 +79,6 @@ module.exports = function greetings(pool) {
         updateCounter,
         clearValues,
         getNames,
-        // eachUserCounter,
-        // setName,
         checkName,
         counter,
         greetedUsersCount
