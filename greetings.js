@@ -44,7 +44,7 @@ module.exports = function greetings(pool) {
     async function checkName(name) {
         name = name.toUpperCase().charAt(0) + name.slice(1);
         const users = await pool.query('select name from greet_me where name=$1', [name])
-        return users.rowCount;
+        return users.rowCount > 0;
     }
     async function updateCounter(name) {
         name = name.toUpperCase().charAt(0) + name.slice(1);

@@ -58,23 +58,25 @@ describe('The Greet function', function() {
 })
 
 describe('Insert names and Get names on database', function() {
+    beforeEach(async function() {
+        // clean the tables before each test run
+        await pool.query("delete from greet_me;");
 
+    });
     it('should insert name and update counter for john', async function() {
 
         let greetings = Greet(pool);
+        await greetings.insertNames('John')
         var name = await greetings.checkName('John');
 
-        if (name === 0) {
-            await greetings.insertNames('John')
-            await greetings.insertNames('John')
-            await greetings.insertNames('John')
-
-        } else {
-            await greetings.updateCounter("John");
+        if (name) {
+            await greetings.updateCounter('John')
+            await greetings.updateCounter('John')
+            await greetings.updateCounter('John')
         }
 
 
-        assert.equal(3, await greetings.counter())
+        assert.equal(4, await greetings.greetedUsersCount('John'))
     })
 
 
