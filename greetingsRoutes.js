@@ -29,7 +29,6 @@ module.exports = function greetingRoute(pool) {
             //display my greetings
             var displayMyGreetings = await Greetings.greet(userName, language)
             var counter = await Greetings.counter()
-            console.log(counter);
 
         }
 

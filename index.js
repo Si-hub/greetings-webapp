@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const flash = require('express-flash');
 const session = require('express-session');
 const express = require("express");
-const routes = require('./greetingsRoutes');
+// const routes = require('./greetingsRoutes');
 
 const pg = require("pg");
 const Pool = pg.Pool;
