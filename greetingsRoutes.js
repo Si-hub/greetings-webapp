@@ -4,8 +4,10 @@ module.exports = function greetingRoute(pool) {
     const Greetings = greetings(pool);
 
     async function home(req, res) {
-
-        res.render("index");
+        var counter = await Greetings.counter()
+        res.render("index", {
+            count: counter
+        });
     }
 
     async function toGreet(req, res) {
